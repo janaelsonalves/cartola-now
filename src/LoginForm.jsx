@@ -65,9 +65,14 @@ class LoginForm extends Component {
     })
       .then(res => {
         this.setState(res.data);
-        this.props.glbId = res.data["glbId"];
-        this.props.id = res.data["id"];
-        this.props.userMessage = res.data["userMessage"];
+        // this.props.glbId = res.data["glbId"];
+        // this.props.id = res.data["id"];
+        // this.props.userMessage = res.data["userMessage"];
+        this.props.onAuth({
+          glbId: res.data["glbId"],
+          id: res.data["id"],
+          userMessage: res.data["userMessage"]
+        });
       })
       .catch(err => console.log(err));
   }

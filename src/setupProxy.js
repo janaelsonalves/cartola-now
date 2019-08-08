@@ -19,8 +19,7 @@ module.exports = function(app) {
       pathRewrite: {
         "^/api/auth": ""
       },
-      changeOrigin: true,
-      logLevel: true
+      changeOrigin: true
     })
   );
   //   app.use(proxy('/api/auth', { target: 'https://api.cartolafc.globo.com' }));

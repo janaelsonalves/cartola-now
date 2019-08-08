@@ -1,61 +1,26 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Link
-} from "react-router-dom";
+import Home from "./components/Home";
 
-import "./App.css";
-import LoginForm from "./LoginForm";
-import Home from "./Home";
-import About from "./About";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
-function App(props) {
-  const { glbId, id, userMessage } = props;
-  console.log(glbId, id, userMessage);
-  const auth = {
-    glbId: "",
-    id: "",
-    userMessage: ""
-  };
+import CartolaMarket from "./components/CartolaMarket";
+import AthleteList from "./components/AthleteList";
+import TeamList from "./components/TeamList";
+
+function App() {
   return (
-    <div className="App">
-      {/* <LoginForm {...auth} /> */}
+    <div>
       <Router>
-        <Nav />
-        <div>
-          <Route
-            exact
-            path="/"
-            render={() =>
-              auth.glbId.length > 0 ? (
-                <Redirect to="/" />
-              ) : (
-                <LoginForm {...auth} />
-              )
-            }
-          />
-          {/* <Route path="/" exact render={} component={Home} /> */}
-          <Route path="/about/" component={About} />
-        </div>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/atletas">Atletas</Link>
+          <Link to="/clubes">Clubes</Link>
+        </nav>
+        <Route exact component={CartolaMarket} path="/" />
+        <Route component={AthleteList} path="/atletas" />
+        <Route component={TeamList} path="/clubes" />
       </Router>
     </div>
-  );
-}
-
-function Nav() {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about/">About</Link>
-        </li>
-      </ul>
-    </nav>
   );
 }
 
